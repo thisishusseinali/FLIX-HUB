@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FLIX-HUB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,500&display=swap'>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <style>
+    :root {
+      --primary-color: rgb(25, 139, 253);
+      --secondary-color: grey;
+      --background-color: #f9f9f9;
+      --text-color: #000;
+    }
+
+    html, body {
+      height: 100%;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      overflow: hidden; /* Add this line to prevent scroll bars */
+
+    }
+
+    @media (min-width: 32rem) {
+      body {
+        font-size: 102.5%;
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    figure {
+      max-width: 100%;
+      height: auto;
+      margin: 0;
+    }
+    .movie {
+      margin: 20px 5vw;
+      display: block;
+      background-color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+
+    button {
+      margin: 3vh 0;
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1a89e8;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      border: 1px solid var(--secondary-color);
+    }
+
+    th, td {
+      border: 1px solid var(--secondary-color);
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    td a {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 600px) {
+      .movie {
+        padding-top: 8vh;
+      }
+
+      button {
+        margin: 3vh 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="movie">
+    <h2><u>Movie Recommendations for "{{ search_name }}"</u></h2>
+    <table class="movie_table" align="center">
+      <tr>
+        <th>Movie Title</th>
+        <th>Release Date</th>
+        <th>Similarity Score</th>
+      </tr>
+      <tbody class="table_body">
+        {% for i in range(10) %}
+        <tr>
+          <td><a href="{{ movie_homepage[i] }}" target="_blank">{{ movie_names[i] }}</a></td>
+          <td>{{ movie_releaseDate[i] }}</td>
+          <td>{{ movie_simScore[i][1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js'></script>
+</body>
+</html>
